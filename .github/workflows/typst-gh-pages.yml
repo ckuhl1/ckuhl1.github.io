@@ -1,0 +1,39 @@
+name: Build Typst and deploy to Pages
+on: [push, workflow_dispatch]
+
+permissions:
+  contents: write
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Typst
+        uses: lvignoli/typst-action@main
+        with:
+          source_file: index.typ
+          options: |
+            --features=html
+            --format=html
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: *.html
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
