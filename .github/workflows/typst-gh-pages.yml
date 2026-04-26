@@ -1,9 +1,6 @@
 name: Build Typst and deploy to Pages
 on: [push, workflow_dispatch]
 
-permissions:
-  contents: write
-
 jobs:
   # Build job
   build:
@@ -12,6 +9,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     permissions:
+      pages: write
       id-token: write
     steps:
       - uses: actions/checkout@v3
