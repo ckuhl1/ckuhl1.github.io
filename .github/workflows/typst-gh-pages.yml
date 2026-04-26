@@ -31,7 +31,7 @@ jobs:
           name: github-pages
           path: index.html
 
+      - run: ls -Rla
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
-      - run: ls -Rla
