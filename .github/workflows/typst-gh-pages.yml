@@ -1,6 +1,6 @@
 name: Build Typst and deploy to Pages
-on: []
-# on: [push, workflow_dispatch]
+on:
+  workflow_dispatch:
 
 concurrency:
   group: "pages"
