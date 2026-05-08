@@ -1,5 +1,6 @@
 name: Build Typst and deploy to Pages
-on: [push, workflow_dispatch]
+on: []
+# on: [push, workflow_dispatch]
 
 jobs:
   # Build job
