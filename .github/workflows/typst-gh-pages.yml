@@ -1,5 +1,7 @@
 name: Build Typst and deploy to Pages
 on:
+  push:
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -33,8 +35,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          # Upload entire repository
-          path: '.'
+          path: "."
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
