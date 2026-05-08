@@ -33,7 +33,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: index.html
+          path: .
 
       - run: ls -Rla
       - name: Deploy to GitHub Pages
