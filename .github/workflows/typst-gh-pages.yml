@@ -25,8 +25,8 @@ jobs:
         uses: actions/checkout@v6
       - name: Setup Pages
         uses: actions/configure-pages@v6
-      - name: Typst
-        uses: lvignoli/typst-action@main
+      - name: Typst build
+        uses: JixS4v/typst-action@main
         with:
           source_file: index.typ
           options: |
