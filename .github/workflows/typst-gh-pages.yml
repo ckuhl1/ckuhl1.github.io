@@ -34,7 +34,7 @@ jobs:
           chmod +x typst
           ./typst --version
       - name: Typst build
-        run: ./typst compile --features=bundle,html --format=bundle index.typ
+        run: ./typst compile --features=bundle,html --format=bundle site.typ
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
