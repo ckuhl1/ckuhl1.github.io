@@ -30,10 +30,11 @@ jobs:
           name="typst-x86_64-unknown-linux-musl"
           curl -L -o typst.tar.xz "github.com/typst/typst/releases/download/v0.15.1/$name.tar.xz"  
           tar -xJf typst.tar.xz
-          chmod +x "$name/typst"
-          ./$name/typst --version
+          mv "$name/typst" .
+          chmod +x typst
+          ./typst --version
       - name: Typst build
-        run: ./$name/typst --features=bundle,html --format=bundle index.typ
+        run: ./typst --features=bundle,html --format=bundle index.typ
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
