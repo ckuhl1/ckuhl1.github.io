@@ -1,7 +1,11 @@
-#set document(title: "Hello, world!")
-#title()
+#document("index.html", title: [Home -- ckuhl])[
+  #title()
+  Finally, this blog can support multiple files!
+  Consider checking out the #link(<blog>)[blog].
+] <home>
 
-#lorem(30)
-
-_Blog created with Typst!_\
-Publishing attempt 1
+#document("blog/index.html" title [Blog -- ckuhl])[
+  #title()
+  The following is a list of blog articles:
+  - (TODO ...)
+] <blog>
