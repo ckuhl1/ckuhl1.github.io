@@ -4,8 +4,8 @@
   Consider checking out the #link(<blog>)[blog].
 ] <home>
 
-#document("blog/index.html" title [Blog -- ckuhl])[
+#document("blog/index.html", title: [Blog -- ckuhl])[
   #title()
   The following is a list of blog articles:
-  - (TODO ...)
+  - TODO ...
 ] <blog>
