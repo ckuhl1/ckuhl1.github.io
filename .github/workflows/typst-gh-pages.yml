@@ -30,8 +30,8 @@ jobs:
         with:
           source_file: index.typ
           options: |
-            --features=html
-            --format=html
+            --features=bundle,html
+            --format=bundle
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
