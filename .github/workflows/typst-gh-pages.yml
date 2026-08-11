@@ -28,8 +28,8 @@ jobs:
       - name: Download Typst release
         run: |
           name="typst-x86_64-unknown-linux-musl"
-          curl -L "github.com/typst/typst/releases/download/v0.15.1/$name.tar.xz"
-          tar -xJf "$name.tar.xz"
+          curl -L -o typst.tar.xz "github.com/typst/typst/releases/download/v0.15.1/$name.tar.xz"  
+          tar -xJf typst.tar.xz
           chmod +x "$name/typst"
           ./$name/typst --version
       - name: Typst build
