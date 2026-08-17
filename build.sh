@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Top-level pages must be specified in site.typ explicitly; here we only collect
 # any nested pages.
 files="$(find -mindepth 2 -name "*.typ")"
