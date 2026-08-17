@@ -27,14 +27,16 @@ jobs:
         uses: actions/configure-pages@v6
       - name: Download Typst release
         run: |
-          release="typst-x86_64-unknown-linux-musl"
-          curl -L -o typst.tar.xz "github.com/typst/typst/releases/download/v0.15.1/$release.tar.xz"  
+          version="v0.15.1"
+          build="typst-x86_64-unknown-linux-musl"
+          curl -L -o typst.tar.xz "github.com/typst/typst/releases/download/$version/$build.tar.xz"
           tar -xJf typst.tar.xz
-          mv "$release/typst" .
+          mv "$build/typst" .
           chmod +x typst
-          ./typst --version
-      - name: Typst build
-        run: ./typst compile --features=bundle,html --format=bundle --pretty site.typ
+          export PATH="$PATH:."
+          typst --version
+      - name: Build site
+        run: ./build.sh
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
