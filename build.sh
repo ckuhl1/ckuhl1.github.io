@@ -24,5 +24,7 @@ populate_template() {
   done < "$template" > "$output"
 }
 
+# Populate the feed entries' contents.
+mv site/blog/atom.xml site/blog/atom-template.xml
 populate_template site/blog/atom-template.xml site/blog/atom.xml
-# rm site/blog/atom-template.xml
+rm site/blog/atom-template.xml

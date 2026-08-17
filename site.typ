@@ -94,7 +94,7 @@
 // Generate feeds.
 #let pages = pages.sorted(by: (a, b) => a.published >= b.published)
 #asset(
-  "blog/atom-template.xml",
+  "blog/atom.xml",
   feed.atom(pages.filter(it => it.ref-path.starts-with("blog/"))),
 ) <atom-feed>
 
