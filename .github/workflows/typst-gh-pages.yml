@@ -33,8 +33,7 @@ jobs:
           tar -xJf typst.tar.xz
           mv "$build/typst" .
           chmod +x typst
-          export PATH="$PATH:."
-          typst --version
+          ./typst --version
       - name: Build site
         run: ./build.sh
       - name: Upload artifact

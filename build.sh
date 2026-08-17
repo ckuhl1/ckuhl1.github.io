@@ -3,7 +3,9 @@
 # any nested pages.
 files="$(find -mindepth 2 -name "*.typ")"
 echo $files
-typst compile --features=bundle,html --format=bundle --pretty --input "files=$files" site.typ
+# Locally, the executable should already be on the PATH, but on GitHub, it's
+# only in the cwd.
+PATH="$PATH:." typst compile --features=bundle,html --format=bundle --pretty --input "files=$files" site.typ
 
 # Read the supplied template file and, on every line, replace the first
 # occurrence of `%INCLUDE:path%` with the verbatim contents of `path`.
