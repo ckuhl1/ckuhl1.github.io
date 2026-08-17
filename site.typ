@@ -26,7 +26,7 @@
     #html.head[
       #html.meta(charset: "utf-8")
       #html.meta(name: "viewport", content: "width=device-width, initial-scale=1")
-      #html.title("Home")
+      #html.title("Carl Kuhlemann")
       #html.link(rel: "icon", type: "image/png", href: "favicon.png")
       #html.meta(name: "authors", content: "Carl Kuhlemann")
     ]

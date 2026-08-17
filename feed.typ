@@ -5,16 +5,13 @@
     <title type="html">ckuhl</title>
     <link rel="self" href="https://ckuhl.me/blog/atom.xml" type="application/atom+xml" />
     <link rel="alternate" href="https://ckuhl.me/blog" type="text/html" />
-    <link rel="icon" href="favicon.png" type="image/svg+xml" />
-    <updated>{UPDATED}</updated>
+    <updated>{UPDATED}T00:00:00.000Z</updated>
     <id>https://ckuhl.me/blog/atom.xml</id>
     <subtitle>TODO</subtitle>
     <author>
       <name>Carl Kuhlemann</name>
-      <email>TODO</email>
-      <uri>TODO</uri>
+      <uri>https://ckuhl.me</uri>
     </author>
-    <icon>/favicon.png</icon>
   {ENTRIES}</feed>
 
   ```.text
