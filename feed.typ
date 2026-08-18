@@ -2,7 +2,7 @@
   let template = ```xml
   <?xml version="1.0" encoding="utf-8"?>
   <feed xmlns="http://www.w3.org/2005/Atom">
-    <title type="html">ckuhl</title>
+    <title type="text">ckuhl</title>
     <link rel="self" href="https://ckuhl.me/blog/atom.xml" type="application/atom+xml" />
     <link rel="alternate" href="https://ckuhl.me/blog" type="text/html" />
     <updated>{UPDATED}T00:00:00.000Z</updated>
@@ -17,7 +17,7 @@
   ```.text
 
   let entries = ""
-  let last-updated = "0000-00-00"
+  let last-updated = datetime(year: 0, month: 1, day: 1)
   for page in pages {
     last-updated = calc.max(last-updated, page.updated)
 
@@ -37,12 +37,19 @@
 
     ```.text
     entry = entry.replace(regex("\\{([-A-Z]+)\\}"), m => {
-      page.at(lower(m.captures.at(0)))
+      let value = page.at(lower(m.captures.at(0)))
+      if type(value) == array {
+        value.join(", ")
+      } else if type(value) == datetime {
+        value.display()
+      } else {
+        value
+      }
     })
     entries += entry
   }
 
   return template
-    .replace("{UPDATED}", last-updated)
+    .replace("{UPDATED}", last-updated.display())
     .replace("{ENTRIES}", entries)
 }
