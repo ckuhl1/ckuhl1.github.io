@@ -1,0 +1,31 @@
+@charset "UTF-8";
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0 32px;
+  background-color: light-dark(rgb(232.05, 230.35, 226.95), rgb(20.4, 25.5, 30.6));
+  color: black;
+  font-family: "Libertinus Serif", serif;
+}
+
+main {
+  max-width: 80ch;
+  margin: 0 auto;
+  position: relative;
+}
+
+a {
+  color: navy;
+}
+
+code, pre {
+  font-family: "Source Code Pro", monospace;
+  font-size: 115%;
+}
+
+p {
+  hyphens: auto;
+  text-align: justify;
+}

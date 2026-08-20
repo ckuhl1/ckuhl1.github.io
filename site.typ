@@ -1,30 +1,31 @@
 #import "feed.typ"
-#import "page.typ" as page: make-page, meta
+#import "post.typ" as post: make-page, meta
 
 // Home page.
 #make-page(
   meta(
-    label: label("home"),
+    label: <home>,
     output-path: "index.html",
     title: "Carl Kuhlemann",
     summary: "The personal website of Carl Kuhlemann.",
-    author: "Carl Kuhlemann, John Doe",
+    author: "Carl Kuhlemann",
     published: "2026-08-17",
     updated: "2026-08-18",
   ),
   title: "Home",
 )[
-  Finally, this site supports multiple files!
-  Consider checking out the #link(<blog>)[blog].
-  Also consider subscribing to the #link(<atom-feed>)[Atom feed]!
+  This website is still in the making,
+  but I've started work on my #link(<blog>)[blog], for instance.
+  My current programming project is a programming language called `kratz`,
+  which compiles to `.sb3` files
+  for the #link("https://scratch.mit.edu")[Scratch] platform.
+  The implementation is done in #link("https://gleam.run")[Gleam],
+  to teach myself some functional programming.
 
-  Passed files:
-  #for file in sys.inputs.files.split("\n") [
-    - #raw(file)
-  ]
+  The HTML pages are authored in pure #link("https://typst.app")[Typst] code.
 ]
 
-#let pages = ()
+#let posts = ()
 #for file in sys.inputs.files.split("\n") {
   // Normalize file name to be used in output and by references.
   let base-path = file.replace(
@@ -39,39 +40,41 @@
   // Used for article href in feed.
   let ref-path = output-path.trim("/index.html", at: end, repeat: false)
 
-  // Retrieve and validate page metadata.
+  // Retrieve and validate post metadata.
   import file: meta
-  if meta != page.meta(..meta) {
-    panic("must construct page metadata via `page.meta`: " + file)
+  if meta != post.meta(..meta) {
+    panic("must construct post metadata via `post.meta`: " + file)
   }
   meta = (
     :..meta,
     label: label,
+    input-path: file,
     output-path: output-path,
     ref-path: ref-path,
   )
 
-  // Output the actual page.
-  make-page(meta, include file)
-  pages.push(meta)
+  // Output the actual pages.
+  make-page(meta, include meta.input-path)
+  posts.push(meta)
 }
-// Put most recent pages first.
-#let pages = pages.sorted(by: (a, b) => a.published >= b.published)
+// Put most recent posts first.
+#let posts = posts.sorted(by: (a, b) => a.published >= b.published)
 
 // Blog overview page.
 #make-page(
   meta(
-    label: label("blog"),
+    label: <blog>,
     output-path: "blog/index.html",
     title: "Blog",
     summary: "Blog of Carl Kuhlemann.",
     published: "2026-08-17",
   ),
 )[
-  The following is a list of blog articles I've written:
-  #for page in pages.filter(it => it.ref-path.starts-with("blog/")) [
-    - *#link(page.label, page.title)*\
-      #html.time(page.published.display("[month repr:short] [day], [year]"), datetime: page.published): #page.summary
+  I tend to write posts on programming, math, linguistics.
+  There's also an #link(<atom-feed>)[Atom feed].
+  #for post in posts.filter(it => it.ref-path.starts-with("blog/")) [
+    - *#link(post.label, post.title)*\
+      #html.time(post.published.display("[month repr:short] [day], [year]"), datetime: post.published): #post.summary
 
   ]
 ]
@@ -79,8 +82,10 @@
 // Generate feeds.
 #asset(
   "blog/atom.xml",
-  feed.atom(pages.filter(it => it.ref-path.starts-with("blog/"))),
+  feed.atom(posts.filter(it => it.ref-path.starts-with("blog/"))),
 ) <atom-feed>
 
-// The site icon.
+// Remaining assets.
 #asset("favicon.png", read("favicon.png", encoding: none))
+#asset("favicon.svg", read("favicon.svg", encoding: none))
+#asset("style.css", read("style.css", encoding: none))

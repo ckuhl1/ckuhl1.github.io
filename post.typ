@@ -17,6 +17,8 @@
   author: auto,
   published: none,
   updated: auto,
+  previous: none,
+  next: none,
   //category: ((:)),
   //contributor: (),
   //rights: none,
@@ -61,39 +63,69 @@
     author: author,
     published: published,
     updated: updated,
+    previous: previous,
+    next: next,
   )
 }
 
-#let make-page(page, title: auto, body) = [
+#let make-page(post, title: auto, body) = [
   // Make references to index files point to their respective folders.
   #show html.elem.where(tag: "a"): it => {
-    let trimmed = it.attrs.href.trim("/index.html", at: end, repeat: false)
+    let trimmed = it.attrs.href
+      .trim("#", at: end, repeat: false)
+      .trim("/index.html", at: end, repeat: false)
+
     if trimmed.len() < it.attrs.href.len() {
       html.a(href: trimmed, it.body)
+    } else if trimmed == "index.html" {
+      html.a(href: ".", it.body)
     } else {
       it
     }
   }
 
   #document(
-    page.output-path,
-    title: page.title,
+    post.output-path,
+    title: post.title,
   )[
     #html.html(lang: "en")[
       #html.head[
         #html.meta(charset: "utf-8")
         #html.meta(name: "viewport", content: "width=device-width, initial-scale=1")
-        #html.title(page.title)
-        #html.meta(name: "description", content: page.summary)
-        #context for author in page.author [
+        #html.title(post.title)
+        #html.meta(name: "description", content: post.summary)
+        #for author in post.author [
           #html.meta(name: "author", content: author)
         ]
-        #html.link(rel: "icon", type: "image/png", href: "https://ckuhl.me/favicon.png")
+        #html.link(rel: "alternate", type: "application/atom+xml", href: "/blog/atom.xml", title: "Atom 1.0")
+        #html.link(rel: "stylesheet", type: "text/css", href: "/style.css")
+        #html.link(rel: "icon", type: "image/png", href: "/favicon.png", sizes: ((32, 32),))
+        #html.link(rel: "icon", type: "image/svg+xml", href: "/favicon.svg")
       ]
       #html.body[
-        #std.title(if title != auto { title } else { page.title })
-        #body
+        #html.header[
+          #link(<home>)[Home] -- #link(<blog>)[Blog]
+        ]
+      
+        #html.main[
+          #std.title(if title != auto { title } else { post.title })
+          #body
+        ]
+
+        #divider()
+        #context html.footer[
+          #let previous = if post.previous != none { query(post.previous).first() }
+          #let next = if post.next != none { query(post.next).first() }
+
+          #table(
+            columns: 2,
+            [*Published*], post.published.display("[month repr:short] [day], [year]"),
+            ..if post.updated != post.published { ([*Updated*], post.updated.display("[month repr:short] [day], [year]")) },
+            ..if previous != none { ([*Previous*], link(post.previous, previous.title)) },
+            ..if next != none { ([*Next*], link(post.next, next.title)) },
+          )
+        ]
       ]
     ]
-  ] #page.label
+  ] #post.label
 ]

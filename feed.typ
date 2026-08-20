@@ -1,4 +1,4 @@
-#let atom(pages) = {
+#let atom(posts) = {
   let template = ```xml
   <?xml version="1.0" encoding="utf-8"?>
   <feed xmlns="http://www.w3.org/2005/Atom">
@@ -18,8 +18,8 @@
 
   let entries = ""
   let last-updated = datetime(year: 0, month: 1, day: 1)
-  for page in pages {
-    last-updated = calc.max(last-updated, page.updated)
+  for post in posts {
+    last-updated = calc.max(last-updated, post.updated)
 
     let entry = ```xml
       <entry>
@@ -37,7 +37,7 @@
 
     ```.text
     entry = entry.replace(regex("\\{([-A-Z]+)\\}"), m => {
-      let value = page.at(lower(m.captures.at(0)))
+      let value = post.at(lower(m.captures.at(0)))
       if type(value) == array {
         value.join(", ")
       } else if type(value) == datetime {
