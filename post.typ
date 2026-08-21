@@ -72,13 +72,11 @@
   // Make references to index files point to their respective folders.
   #show html.elem.where(tag: "a"): it => {
     let trimmed = it.attrs.href
-      .trim("#", at: end, repeat: false)
-      .trim("/index.html", at: end, repeat: false)
+      .replace(regex("index\\.html$"), ".")
+      .trim(".", at: end, repeat: false)
 
     if trimmed.len() < it.attrs.href.len() {
       html.a(href: trimmed, it.body)
-    } else if trimmed == "index.html" {
-      html.a(href: ".", it.body)
     } else {
       it
     }
@@ -97,8 +95,11 @@
         #for author in post.author [
           #html.meta(name: "author", content: author)
         ]
-        #html.link(rel: "alternate", type: "application/atom+xml", href: "/blog/atom.xml", title: "Atom 1.0")
+
+        // #html.link(rel: "canonical", href: "https://ckuhl.me" + post.ref-path)
+        // #html.link(rel: "alternate", type: "application/atom+xml", href: "/blog/atom.xml", title: "Atom 1.0")
         #html.link(rel: "stylesheet", type: "text/css", href: "/style.css")
+
         #html.link(rel: "icon", type: "image/png", href: "/favicon.png", sizes: ((32, 32),))
         #html.link(rel: "icon", type: "image/svg+xml", href: "/favicon.svg")
       ]

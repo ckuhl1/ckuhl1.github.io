@@ -1,12 +1,55 @@
 @charset "UTF-8";
+
+@font-face {
+  font-family: "Libertinus Serif";
+  src: url("/font/LibertinusSerif-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Libertinus Serif";
+  src: url("/font/LibertinusSerif-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Libertinus Serif";
+  src: url("/font/LibertinusSerif-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Libertinus Serif";
+  src: url("/font/LibertinusSerif-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("/font/SourceCodeVF-Upright.ttf.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("/font/SourceCodeVF-Italic.ttf.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+}
+
 :root {
   color-scheme: light dark;
 }
 
 body {
   margin: 0 32px;
-  background-color: light-dark(rgb(232.05, 230.35, 226.95), rgb(20.4, 25.5, 30.6));
-  color: black;
+  background-color: light-dark(white, black);
+  color: light-dark(black, white);
   font-family: "Libertinus Serif", serif;
 }
 
@@ -17,15 +60,22 @@ main {
 }
 
 a {
-  color: navy;
+  color: light-dark(navy, aqua);
+}
+
+pre {
+  line-height: 1.4em;
+  overflow-x: scroll;
+  padding: 0.5em;
 }
 
 code, pre {
   font-family: "Source Code Pro", monospace;
-  font-size: 115%;
+  /* font-size: 115%; */
 }
 
 p {
   hyphens: auto;
+  margin-bottom: 0.5em;
   text-align: justify;
 }

@@ -26,9 +26,9 @@
 ]
 
 #let posts = ()
-#for file in sys.inputs.files.split("\n") {
+#for input-path in sys.inputs.posts.split("\n") {
   // Normalize file name to be used in output and by references.
-  let base-path = file.replace(
+  let base-path = input-path.replace(
     regex("^(?:\\./)?(.*?)\\.typ$"),
     m => m.captures.at(0),
   )
@@ -37,18 +37,18 @@
   // Used for labels in Typst code.
   let label-path = base-path.trim("/index", at: end, repeat: false)
   let label = label(label-path.replace("/", "."))
-  // Used for article href in feed.
-  let ref-path = output-path.trim("/index.html", at: end, repeat: false)
+  // Used for explicit hrefs.
+  let ref-path = output-path.replace(regex("/index.html"), "/")
 
   // Retrieve and validate post metadata.
-  import file: meta
+  import input-path: meta
   if meta != post.meta(..meta) {
-    panic("must construct post metadata via `post.meta`: " + file)
+    panic("must construct post metadata via `post.meta`: " + input-path)
   }
   meta = (
     :..meta,
     label: label,
-    input-path: file,
+    input-path: input-path,
     output-path: output-path,
     ref-path: ref-path,
   )
@@ -65,6 +65,7 @@
   meta(
     label: <blog>,
     output-path: "blog/index.html",
+    ref-path: "blog/",
     title: "Blog",
     summary: "Blog of Carl Kuhlemann.",
     published: "2026-08-17",
@@ -89,3 +90,6 @@
 #asset("favicon.png", read("favicon.png", encoding: none))
 #asset("favicon.svg", read("favicon.svg", encoding: none))
 #asset("style.css", read("style.css", encoding: none))
+#for font in sys.inputs.fonts.split("\n") {
+  asset(font, read(font, encoding: none))
+}
