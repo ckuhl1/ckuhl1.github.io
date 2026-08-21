@@ -69,11 +69,13 @@
 }
 
 #let make-page(post, title: auto, body) = [
-  // Make references to index files point to their respective folders.
+  // Make references to index files point to their respective directories,
+  // keeping trailing slashes.
   #show html.elem.where(tag: "a"): it => {
     let trimmed = it.attrs.href
       .replace(regex("index\\.html$"), ".")
-      .trim(".", at: end, repeat: false)
+      .replace(regex("/\\.$"), "/")
+      .replace(regex("^#$"), "")
 
     if trimmed.len() < it.attrs.href.len() {
       html.a(href: trimmed, it.body)
