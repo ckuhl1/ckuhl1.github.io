@@ -31,14 +31,14 @@
 @font-face {
   font-family: "Source Code Pro";
   src: url("/font/SourceCodeVF-Upright.ttf.woff2") format("woff2");
-  font-weight: 100;
+  font-weight: 100 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Source Code Pro";
   src: url("/font/SourceCodeVF-Italic.ttf.woff2") format("woff2");
-  font-weight: 900;
+  font-weight: 100 900;
   font-style: italic;
 }
 
