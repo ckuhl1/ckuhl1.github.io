@@ -9,7 +9,8 @@ For a long time I used the German QWERTZ layout
 with freehand typing for everything, including coding.
 When I finally managed to learn touch-typing
 in the summer of 2025,
-I decided to go for Colemak for a few reasons:
+I decided to go for #link("https://colemak.org/")[Colemak]
+for a few reasons:
 
 - It's more ergonomic, duh.
 
@@ -19,7 +20,7 @@ I decided to go for Colemak for a few reasons:
   There's also Colemak-DH, but I decided against it
   because it wasn't available on my phone's keyboard;
   I know, that probably shouldn't be of importance
-  for a layout designed for _touch-typing_.
+  for a _touch-typing_ layout.
   Generally though, Colemak simply felt better.
 
   In addition, I believed the main improvement to lie in
@@ -66,12 +67,16 @@ Both punctuation, the arrow keys, and numpad
 all occupy the same keys as the standard letters.
 
 After some evaluation,
-I decided to go for the rather new Noted layout;
+I decided to go for the rather new
+#link("https://neo-layout.org/Layouts/noted/")[Noted layout]\;
 it was developed with quite an advanced optimizer
 and further hand-tweaked;
 you can read more about it on
 the #link("https://dariogoetz.github.io/noted-layout/")[official website] and
-#reddit("r/KeyboardLayouts/comments/15jpgfa/my_journey_ends_here_the_noted_layout/")[this Reddit post].
+#reddit("r/KeyboardLayouts/comments/15jpgfa/my_journey_ends_here_the_noted_layout/")[this Reddit post]\;
+it's even included on up-to-date Linux distros!
+(Maybe read those posts first,
+otherwise some of the following might make little sense.)
 I've been very happy with my decision for the past few months;
 below are some of my main takeaways:
 
@@ -150,7 +155,7 @@ below are some of my main takeaways:
   Some (like "ea" on the left and "bt" and "gt" on the right index finger)
   still feel quick and efficient,
   but there's a lot of SFB action going on
-  between the inner two columns ("aq", "dt", "eo", "eq", , "oe", "pt").
+  between the inner two columns ("aq", "dt", "eo"/"oe", "eq", "oa", "pt").
   This prompts the use of ergonomic alt-fingering,
   far more so than Colemak does, in my opinion.
   I'm not quite settled on the idea yet,
