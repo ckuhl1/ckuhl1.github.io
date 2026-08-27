@@ -1,3 +1,9 @@
+#let todo = text(red)[*TODO*]
+
+// Common URL shortcuts.
+#let github(dest, body) = link("https://github.com/" + dest, body)
+#let reddit(dest, body) = link("https://safereddit.com/" + dest, body)
+
 #let make-date(date) = {
   if type(date) == str {
     // Date-level precision is good enough for us.

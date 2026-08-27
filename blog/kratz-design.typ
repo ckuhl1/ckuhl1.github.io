@@ -4,6 +4,7 @@
   summary: "Some of the rationales I considered in designing the kratz programming language.",
   updated: "2026-08-17",
   published: "2026-08-15",
+  next: <blog.keyboard-layout>,
 )
 
 Compilation occurs in the following steps:
