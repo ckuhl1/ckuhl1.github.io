@@ -24,10 +24,10 @@ for a few reasons:
   Generally though, Colemak simply felt better.
 
   In addition, I believed the main improvement to lie in
-  using an ergonomic layout (and touch-typing) _at all_;
-  especially because I also write a lot in German and a few other languages,
+  using an ergonomic layout (and touch-typing) _at all_.
+  Especially because I also write a lot in German and a few other languages,
   using a layout with a few more points on an English-language corpus
-  would thus have had even less of a practical impact.
+  would have had even less of a practical impact.
 
 - I had attempted touch-typing a few times prior,
   but old muscle memory kept creeping through.
@@ -74,7 +74,7 @@ and further hand-tweaked;
 you can read more about it on
 the #link("https://dariogoetz.github.io/noted-layout/")[official website] and
 #reddit("r/KeyboardLayouts/comments/15jpgfa/my_journey_ends_here_the_noted_layout/")[this Reddit post]\;
-it's even included on up-to-date Linux distros!
+it's even included in up-to-date Linux distros!
 (Maybe read those posts first,
 otherwise some of the following might make little sense.)
 I've been very happy with my decision for the past few months;
@@ -98,18 +98,16 @@ below are some of my main takeaways:
   is extremely relaxing.
 
   Specifically among the Neo layouts,
-  Noted has the apostrophe on the ring finger right under `r`,
-  where other layouts tend to have `n` or `t` or similar.
-  This fortunate placement by Noted avoids,
-  I believe,
-  as many same-finger bigrams as possible
+  on Noted the apostrophe shares its ring-finger position
+  with `r`, instead of `n` or `t` like on many other layouts.
+  This fortunate placement avoids many same-finger bigrams,
   while keeping the apostrophe accessible
   and in its original Neo position.
 
 - Ergonomic placement of navigation keys
   belongs in the hands of one's keyboard layout,
   and not to any individual application like Vim.
-  You'll need the navigation keys in every setting,
+  You need navigation keys in every situation,
   and expecting `hjkl` support from multiple applications
   (or switching to Vim for every line you write)
   is, in my opinion,
@@ -127,13 +125,14 @@ below are some of my main takeaways:
   instead,
   but that meant moving all the pretty mnemonic keys
   that had previously occupied those spots
-  to other places;
-  and doing so would have been required for every program
-  whith `hjkl` support.
+  to other places.
+  Doing so would have been required for every program
+  with `hjkl` support,
+  which, amongst other things, stopped me from using Hyprland.
 
 - Staying close to QWERTY with regard to common shortcut keys
   (`z`, `x`, `c`, `v`, sometimes `q` and `w` as well)
-  is somewhat a contradiction for an ergonomic layout.
+  is somewhat contradictory for an ergonomic layout.
   I understand the idea of keeping muscle memory,
   but that has to be relearned anyway.
   Rather, as Noted does,
@@ -147,6 +146,8 @@ below are some of my main takeaways:
   Ctrl-Shift-z or Ctrl-y for redo,
   so now undo and redo are in a logical constellation,
   right next to each other!
+  And just the other day I discovered a similar delight
+  with `b`/`f` (used e.~g. in manpages for scrolling pagewise).
 
 - For German, the Colemak layout has
   a few uncomfortable same-finger bigrams like "sc" and "eu"
@@ -175,8 +176,8 @@ and also more comfortable than typing English on Colemak.
 Admittedly, being the first proper ergo layout,
 Colemak is already comparatively old.
 But considering that Noted sacrifices
-quite central positions with the German umlauts,
-and only used a 40~% English training corpus,
+quite central positions for the German umlauts,
+and only uses a 40~% English training corpus,
 I think that's quite a tribute to its quality!
 
 I also conclude that layering is far underused
