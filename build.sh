@@ -24,7 +24,7 @@ populate_template() {
   while IFS= read -r line; do
     if [[ $line =~ ^(.*?)%INCLUDE:(.*?)%(.*)$ ]]; then
       printf '%s' "${BASH_REMATCH[1]}"
-      sed -n '/<body>/,/<\/body>/{/<\/\?body>/d;p;}' "${BASH_REMATCH[2]}"
+      sed -n '/<main>/,/<\/main>/{/<\/\?main>/d;p;}' "${BASH_REMATCH[2]}"
       printf '%s\n' "${BASH_REMATCH[3]}"
     else
       printf '%s\n' "$line"
