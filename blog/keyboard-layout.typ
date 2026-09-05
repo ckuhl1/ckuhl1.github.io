@@ -1,6 +1,8 @@
-#import "../post.typ": *
+#import "../linking.typ": *
+#import "../post.typ": meta
 #let meta = meta(
   title: "Keyboard layouts",
+  summary: "The keyboard layouts I’ve used, my experiences with them, and what I’d recommend.",
   published: "2026-08-27",
   previous: <blog.kratz-design>,
 )

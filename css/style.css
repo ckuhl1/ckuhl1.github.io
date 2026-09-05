@@ -57,39 +57,72 @@
 }
 
 :root {
-  color-scheme: light dark;
+  --color-background: #fff;
+  --color-code-block: #ededed;
+  --color-link: #000080;
+  --color-text: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #1b1b1b;
+    /* For now, Typst still hard-codes token colors, so make the block bright as
+       well to keep it readable. */
+    /* --color-code-block: #343434; */
+    --color-code-block: #ededed;
+    --color-link: #8080ff;
+    --color-text: #fff;
+  }
+
+  /* See the comment above. */
+  pre {
+    color: #000;
+  }
 }
 
 body {
-  margin: 0 32px;
-  background-color: light-dark(white, black);
-  color: light-dark(black, white);
+  background-color: var(--color-background);
+  color: var(--color-text);
   font-family: "Libertinus Serif", serif;
+  margin: 16px 32px;
 }
 
-main {
-  max-width: 80ch;
+main, footer {
+  width: 80ch;
   margin: 0 auto;
   position: relative;
 }
 
-a {
-  color: light-dark(navy, aqua);
+a:any-link {
+  color: var(--color-link);
 }
 
-pre {
-  line-height: 1.4em;
-  overflow-x: scroll;
-  padding: 0.5em;
+:is(h1, h2, h3, h4, h5, h6) > a:any-link {
+  color: inherit;
+  text-decoration: inherit;
 }
 
-code, pre {
+code {
   font-family: "Source Code Pro", monospace;
-  /* font-size: 115%; */
+  font-size: 0.8rem;
+  line-height: 1.5em;
+  white-space: pre;
+}
+
+hr {
+  width: 100%;
+  margin: 1em 0;
 }
 
 p {
   hyphens: auto;
   margin-bottom: 0.5em;
   text-align: justify;
+}
+
+pre {
+  background-color: var(--color-code-block);
+  border-radius: 0.5em;
+  overflow-x: scroll;
+  padding: 0.5em;
 }

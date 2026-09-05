@@ -1,4 +1,5 @@
 #import "feed.typ"
+#import "linking.typ": *
 #import "post.typ" as post: make-page, meta
 
 // Home page.
@@ -21,8 +22,13 @@
   for the #link("https://scratch.mit.edu")[Scratch] platform.
   The implementation is done in #link("https://gleam.run")[Gleam],
   to teach myself some functional programming.
+  Don't expect much of it though,
+  I (unfortunately) frequently switch projects.
 
-  The HTML pages are authored in pure #link("https://typst.app")[Typst] code.
+  The HTML pages are authored in pure #link("https://typst.app")[Typst],
+  with some Bash sprinkled in for the yet-unsupported features.
+  You can find the source code
+  #github("ckuhl1/ckuhl1.github.io")[here].
 ]
 
 #let posts = ()
@@ -32,18 +38,18 @@
     regex("^(?:\\./)?(.*?)\\.typ$"),
     m => m.captures.at(0),
   )
-  // The output file's path.
-  let output-path = base-path + ".html"
   // Used for labels in Typst code.
   let label-path = base-path.trim("/index", at: end, repeat: false)
   let label = label(label-path.replace("/", "."))
+  // The output file's path.
+  let output-path = label-path + "/index.html"
   // Used for explicit hrefs.
   let ref-path = output-path.replace(regex("/index.html"), "/")
 
   // Retrieve and validate post metadata.
   import input-path: meta
   if meta != post.meta(..meta) {
-    panic("must construct post metadata via `post.meta`: " + input-path)
+    panic("construct post metadata via `post.meta`: " + input-path)
   }
   meta = (
     :..meta,
@@ -89,7 +95,7 @@
 // Remaining assets.
 #asset("favicon.png", read("favicon.png", encoding: none))
 #asset("favicon.svg", read("favicon.svg", encoding: none))
-#asset("style.css", read("style.css", encoding: none))
+#asset("css/style.css", read("css/style.css", encoding: none))
 #for font in sys.inputs.fonts.split("\n") {
   asset(font, read(font, encoding: none))
 }
